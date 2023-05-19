@@ -20,6 +20,15 @@ pipeline {
                         }
                     }
        }
+        stage('Docker image build and push') {
+                    steps {
+                     // withDockerRegistry([credentialsId: 'docker-hub', url:]){
+                      sh 'printenv'
+                      sh 'docker build -t ninanu/numeric-app:""$GIT_COMMIT""'
+                      //sh 'docker push ninanu/numeric-app:""$GIT_COMMIT""'
+                       //}
+                     }
+        }
 
   }
 }
